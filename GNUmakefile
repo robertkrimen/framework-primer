@@ -3,7 +3,7 @@
 all: test
 
 dist:
-	rm -rf inc META.y*ml
+	rm -rf inc META.yaml
 	perl Makefile.PL
 	$(MAKE) -f Makefile dist
 
