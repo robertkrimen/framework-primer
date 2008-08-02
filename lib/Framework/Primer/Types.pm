@@ -9,6 +9,7 @@ use MooseX::Types::Path::Class qw/File/;
 use Scalar::Util qw/looks_like_number/;
 
 subtype 'Path::Resource' => as Object => where { $_->isa('Path::Resource') };
+
 coerce File, from 'Path::Resource', via { $_->file };
 
 package Framework::Primer::Types;

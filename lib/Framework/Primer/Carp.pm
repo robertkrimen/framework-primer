@@ -1,4 +1,4 @@
-package Project::Kanjix::Carp;
+package Framework::Primer::Carp;
 
 use Carp::Clan::Share;
 
