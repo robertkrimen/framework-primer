@@ -133,10 +133,10 @@ sub publish_dir {
     my $self = shift;
     my %given = @_;
 
-    my $from_dir = $_{from_dir} or croak "Wasn't given a dir to copy from";
-    my $to_dir = $_{to_dir} or croak "Wasn't given a dir (or path) to copy to";
-    my $copy = $_{copy};
-    my $skip = $_{skip} || qr/^(?:\.svn|.git|CVS|RCS|SCCS)$/;
+    my $from_dir = $given{from_dir} or croak "Wasn't given a dir to copy from";
+    my $to_dir = $given{to_dir} or croak "Wasn't given a dir (or path) to copy to";
+    my $copy = $given{copy};
+    my $skip = $given{skip} || qr/^(?:\.svn|.git|CVS|RCS|SCCS)$/;
 
     find { no_chdir => 1, wanted => sub {
         my $from = $_;

@@ -44,4 +44,10 @@ sub SETUP {
     Framework::Primer->setup_config_default($class, $given->{config}) if $given->{config};
 }
 
+sub publish_dir {
+    my $self = shift;
+
+    Framework::Primer->publish_dir(@_);
+}
+
 1;

@@ -3,8 +3,6 @@ use inc::Module::Install;
 name 'Framework-Primer';
 all_from 'lib/Framework/Primer.pm';
 
-build_requires 'Test::More';
-
 {
     require ExtUtils::MakeMaker;
     use strict;
@@ -19,15 +17,20 @@ build_requires 'Test::More';
 }
 
 {
-    for (grep { ! /^\s*#/ } split m/\n/, <<_END_) {
+    map { my ($pk, $vr) = split m/\s/; build_requires $pk => $vr || 0 } grep { ! /^\s*#/ } split m/\n/, <<_END_;
+Test::More
+Test::Most
+_END_
+
+    map { my ($pk, $vr) = split m/\s/; requires $pk => $vr || 0 } grep { ! /^\s*#/ } split m/\n/, <<_END_;
+Path::Abstract
+Path::Abstract::URI
+Carp::Clan::Share
 Moose
 MooseX::Types
 MooseX::Types::Path::Class
 MooseX::Types::UUID
 _END_
-        my ($package, $version) = split m/\s/;
-        requires $package => $version || 0;
-    }
 }
 
 auto_install;
