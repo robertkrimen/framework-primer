@@ -11,7 +11,7 @@ has name => qw/is ro required 1/;
 
 has home_dir => qw/is ro coerce 1 lazy_build 1/, isa => Dir;
 sub _build_home_dir {
-    return "./";
+    return Path::Class::Dir->new("./")->absolute;
 }
 
 has config_default => qw/is ro lazy_build 1/;

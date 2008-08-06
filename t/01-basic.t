@@ -3,6 +3,12 @@ use Test::More;
 
 plan qw/no_plan/;
 
+ok(1);
+
+__END__
+
+exit;
+
 package Xyzzy;
 
 use Moose;

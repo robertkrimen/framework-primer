@@ -4,18 +4,18 @@ use Moose::Role;
 use Framework::Primer::Carp;
 use Framework::Primer::Types;
 
-use Path::Abstract::URI;
+use URI::PathAbstract;
 use Template;
 
-has _uri => qw/is ro lazy_build 1 isa Path::Abstract::URI/;
+has _uri => qw/is ro lazy_build 1 isa URI::PathAbstract/;
 sub _build__uri {
     my $self = shift;
     my $method = "build_uri";
     croak "Don't have method \"$method\"" unless my $build = $self->can($method);
     my $got = $build->($self, @_);
 
-    return $got if blessed $got && $got->isa("Path::Abstract::URI");
-    return Path::Abstract::URI->new($got);
+    return $got if blessed $got && $got->isa("URI::PathAbstract");
+    return URI::PathAbstract->new($got);
 }
 
 sub uri {
@@ -118,7 +118,8 @@ has tt_context_sticky => qw/is ro isa HashRef lazy_build 1/;
 sub _build_tt_context_sticky {
     my $self = shift;
     return {
-        uri_for => sub { return $self->uri_for(@_) },
+        uri_for => sub { return $self->uri(@_) },
+        uri => sub { return $self->uri(@_) },
         href => sub { return $self->href(@_) },
         src => sub { return $self->src(@_) },
     };
@@ -138,7 +139,7 @@ sub _tt_context {
     if (1 == @context && ref $context[0] eq "HASH") {
         return $context[0];
     }
-    elsif (@context % 2 == 0) {
+    elsif (0 == (@context % 2)) {
         my %context = @context;
         $context->{$_} = $context{$_} for keys %context;
     }
