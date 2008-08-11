@@ -171,7 +171,7 @@ BEGIN {
         setup => sub {
             my $class = $CALLER;
             return sub {
-                Framework::Primer->setup($CALLER, @_);
+                Framework::Primer->setup($class, @_);
             };
         },
     );
