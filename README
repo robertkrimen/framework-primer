@@ -1,52 +1,77 @@
-Framework-Primer
+NAME
+    Framework::Primer -
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+VERSION
+    Version 0.01
 
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+SYNOPSIS
+        package Xyzzy;
 
+        use Moose;
+        use Xyzzy::Carp;
+        use Xyzzy::Types;
+        use Framework::Primer();
 
-INSTALLATION
+        extends qw/Framework::Primer::Base/;
 
-To install this module, run the following commands:
+        setup(
+            name => 'xyzzy',
+            dir => qq(
+                var
+                var/htdocs
+                assets
+                assets/root
+                assets/tt
+            )
+        );
 
-	perl Makefile.PL
-	make
-	make test
-	make install
+        package Xyzzy::Carp;
 
-SUPPORT AND DOCUMENTATION
+        use strict;
+        use warnings;
 
-After installing, you can find documentation for this module with the
-perldoc command.
+        use Carp::Clan::Share;
 
-    perldoc Framework::Primer
+        package Xyzzy::Types;
 
-You can also look for information at:
+        use strict;
+        use warnings;
 
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Framework-Primer
+        use base qw/Framework::Primer::Types/;
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Framework-Primer
+AUTHOR
+    Robert Krimen, "<rkrimen at cpan.org>"
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Framework-Primer
+BUGS
+    Please report any bugs or feature requests to "bug-framework-primer at
+    rt.cpan.org", or through the web interface at
+    <http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Framework-Primer>. I
+    will be notified, and then you'll automatically be notified of progress
+    on your bug as I make changes.
 
-    Search CPAN
-        http://search.cpan.org/dist/Framework-Primer
+SUPPORT
+    You can find documentation for this module with the perldoc command.
 
+        perldoc Framework::Primer
 
-COPYRIGHT AND LICENCE
+    You can also look for information at:
 
-Copyright (C) 2008 Robert Krimen
+    * RT: CPAN's request tracker
+        <http://rt.cpan.org/NoAuth/Bugs.html?Dist=Framework-Primer>
 
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+    * AnnoCPAN: Annotated CPAN documentation
+        <http://annocpan.org/dist/Framework-Primer>
+
+    * CPAN Ratings
+        <http://cpanratings.perl.org/d/Framework-Primer>
+
+    * Search CPAN
+        <http://search.cpan.org/dist/Framework-Primer>
+
+ACKNOWLEDGEMENTS
+COPYRIGHT & LICENSE
+    Copyright 2008 Robert Krimen, all rights reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
