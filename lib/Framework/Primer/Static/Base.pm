@@ -49,4 +49,15 @@ sub _build_ui {
     return $ui_class->new(framework_primer_handle => $self);
 }
 
+around publish_dir => sub {
+    my $inner = shift;
+    my $self = shift;
+
+    my $from_dir;
+    $from_dir = shift if 1 == @_;
+    my $to_dir = $self->var_htdocs_dir;
+
+    $inner->($self, from_dir => $from_dir, to_dir => $to_dir, @_);
+};
+
 1;
