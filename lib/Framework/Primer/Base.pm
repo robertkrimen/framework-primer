@@ -7,7 +7,7 @@ use Framework::Primer::Types;
 
 use Config::JFDI;
 
-has name => qw/is ro required 1/;
+has name => qw/is ro/;
 
 has home_dir => qw/is ro coerce 1 lazy_build 1/, isa => Dir;
 sub _build_home_dir {
