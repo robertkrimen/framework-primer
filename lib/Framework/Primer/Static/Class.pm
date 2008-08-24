@@ -51,7 +51,7 @@ sub setup_ui_class {
     };
 #    $meta->add_attribute($base_class->name, qw/is ro required 1 weak_ref 1/, isa => $base_class);
     $meta->add_method($base_class->name => sub {
-        return $_[0]->framework_primer_handle;
+        return $_[0]->kit;
     });
 }
 

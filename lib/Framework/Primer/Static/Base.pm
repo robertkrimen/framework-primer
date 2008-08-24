@@ -46,7 +46,7 @@ sub _build_ui {
     else {
         Framework::Primer::Static::Class->setup_ui_class(create => 1, base_class => $class, class => $ui_class, @_);
     }
-    return $ui_class->new(framework_primer_handle => $self);
+    return $ui_class->new(kit => $self);
 }
 
 around publish_dir => sub {
