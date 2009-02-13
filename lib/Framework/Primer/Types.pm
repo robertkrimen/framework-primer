@@ -5,7 +5,7 @@ use warnings qw/FATAL all/;
 
 use MooseX::Types -declare => [qw//];
 use MooseX::Types::Moose qw/Object Int Str Num/;
-use MooseX::Types::Path::Class qw/File/;
+use MooseX::Types::Path::Class qw/File Dir/;
 use Scalar::Util qw/looks_like_number/;
 
 subtype 'Path::Resource' => as Object => where { $_->isa('Path::Resource') };

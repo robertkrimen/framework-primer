@@ -9,7 +9,7 @@ use Config::JFDI;
 
 has name => qw/is ro/;
 
-has home_dir => qw/is ro coerce 1 lazy_build 1/, isa => Dir;
+has home_dir => qw/is ro coerce 1 lazy_build 1/, isa => MooseX::Types::Path::Class::Dir;
 sub _build_home_dir {
     return Path::Class::Dir->new("./")->absolute;
 }

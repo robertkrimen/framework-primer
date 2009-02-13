@@ -93,7 +93,7 @@ sub setup_dir {
 
         next if $class->can($dir_method);
 
-        $class->meta->add_attribute($dir_method => qw/is ro required 1 coerce 1 lazy 1/, isa => Dir, default => sub {
+        $class->meta->add_attribute($dir_method => qw/is ro required 1 coerce 1 lazy 1/, isa => MooseX::Types::Path::Class::Dir, default => sub {
             return shift->$parent_dir_method->subdir($last_dir);
         }, @_);
     }
